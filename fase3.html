@@ -48,7 +48,7 @@
       botao.addEventListener('click', () => {
         // Rola o dado (1d10)
         const dado = Math.floor(Math.random() * 10) + 1;
-        resultadoElemento.innerHTML = Você rolou um <span class="dado-valor">${dado}</span>!;
+        resultadoElemento.textContent = `Você rolou um <span class="dado-valor">${dado}</span>!`;
 
         // Aplica o dano
         if (dado > 6) {
