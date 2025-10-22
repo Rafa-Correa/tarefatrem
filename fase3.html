@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <title>Fase 3 - Rainha Estrela do Mar</title>
+    <link rel="stylesheet" type="text/CSS" href="style.css">
+  </head>
+  <body class="corpo">
+    <header>
+      <h2 class="titulo">Fase 3 - Rainha Estrela do Mar</h2>
+    </header>
+    <main>
+      <p class="paragrafo">Você finalmente encontra seu último inimigo nessa interminável jornada.</p>
+      <p class="paragrafo">Vocês se encaram por alguns segundos, até que o duelo se inicia.</p>
+
+      <div class="jogo">
+        <div class="inimigo rainha">
+            <div class="inimigoFoto"><img class="inimigoFotoImg" src="rainhaEstrelaDoMar.jpg"></div>
+            <div class="inimigoNome"><p class="legenda">Rainha Estrela do Mar</p></div>
+            <div class="inimigoVida rainhaVida"><p class="legenda">Vida: <p class="legenda vidaAtual"></p><p class="legenda">/</p><p class="legenda vidaTotal">5</p></p></div>
+        </div>
+        <div class="ataque">
+            <div class="ataqueBotao">
+                <button class="botao">ATACAR</button>
+            </div>
+            <div class="ataqueResultado">
+              <p class="resultado"></p>
+            </div>
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+
+    <script>
+      // Inicializa as vidas do ministro
+      let vidaRainha = 5;
+
+      // Seleciona os elementos de vida e botão
+      const vida1Elemento = document.querySelector('.rainha .vidaAtual');
+      const resultadoElemento = document.querySelector('.resultado');
+      const botao = document.querySelector('.botao');
+
+      // Exibe as vidas iniciais
+      vida1Elemento.textContent = vidaRainha;
+
+      botao.addEventListener('click', () => {
+        // Rola o dado (1d10)
+        const dado = Math.floor(Math.random() * 10) + 1;
+        resultadoElemento.textContent = `Você rolou um ${dado}!`;
+
+        // Aplica o dano
+        if (dado > 6) {
+          vidaRainha = Math.max(0, vidaRainha - 1);
+          vida1Elemento.textContent = vidaRainha;
+        } 
+
+        // Verifica se os dois estão com vida 0
+        if (vidaRainha === 0) {
+          resultadoElemento.textContent = "A Rainha foi derrotada!";
+          setTimeout(() => {
+            window.location.href = "final.html";
+          }, 1500); // Espera 1,5s antes de mudar de página
+        }
+      });
+    </script>
+  </body>
+</html>

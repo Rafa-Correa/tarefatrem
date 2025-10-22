@@ -1,0 +1,52 @@
+.corpo {
+    background-color: #555;
+    text-align: center;
+    margin: 5pt;
+    padding: 5pt;
+}
+
+.titulo {
+    color: #ddd;
+}
+
+.paragrafo {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    color: #eee;
+    margin: 5pt;
+    padding: 5pt;
+}
+
+.legenda {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: medium;
+    color: #eee;
+    margin: 2pt;
+    padding: 2pt;
+}
+
+.botao {
+    width: 20%;
+    font-size: large;
+}
+
+.inimigos {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.inimigo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inimigoFotoImg {
+    width: 200pt;
+}
+
+.inimigoVida {
+    display: flex;
+    flex-direction: row;
+}

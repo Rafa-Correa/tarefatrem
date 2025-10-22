@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <title>Fase 1 - Soldados Água-Viva</title>
+    <link rel="stylesheet" type="text/CSS" href="style.css">
+  </head>
+  <body class="corpo">
+    <header>
+      <h2 class="titulo">Fase 1 - Soldados Água-Viva</h2>
+    </header>
+    <main>
+      <p class="paragrafo">Obviamente, os mandantes do crime não sujariam as próprias mãos (Mãos? Patas? O que estrelas-do-mar tem?) e mandariam alguma mão de obra mal remunerada para lidar com o serviço pesado.</p>
+      <p class="paragrafo">São apenas dois. Aparentemente, cada um é atingido por um tipo específico de ataque. Vai ser fácil para uma guerreira como você. Avante!</p>
+
+      <div class="jogo">
+        <div class="inimigos">
+          <div class="inimigo soldado1">
+              <div class="inimigoFoto"><img class="inimigoFotoImg" src="soldadoAguaViva.png"></div>
+              <div class="inimigoNome"><p class="legenda">Soldado Água Viva</p></div>
+              <div class="inimigoVida soldado1vida"><p class="legenda">Vida: <p class="legenda vidaAtual"></p><p class="legenda">/</p><p class="legenda vidaTotal">3</p></p></div>
+          </div>
+          <div class="inimigo soldado2">
+              <div class="inimigoFoto"><img class="inimigoFotoImg" src="soldadoAguaViva.png"></div>
+              <div class="inimigoNome"><p class="legenda">Soldado Água Viva</p></div>
+              <div class="inimigoVida soldado2vida"><p class="legenda">Vida: <p class="legenda vidaAtual"></p><p class="legenda">/</p><p class="legenda vidaTotal">3</p></p></div>
+          </div>
+        </div>
+        <div class="ataque">
+            <div class="ataqueBotao">
+              <button class="botao">ATACAR</button>
+            </div>
+            <div class="ataqueResultado">
+              <p class="resultado"></p>
+            </div>
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+
+    <script>
+      // Inicializa as vidas dos soldados
+      let vidaSoldado1 = 3;
+      let vidaSoldado2 = 3;
+
+      // Seleciona os elementos de vida e botão
+      const vida1Elemento = document.querySelector('.soldado1 .vidaAtual');
+      const vida2Elemento = document.querySelector('.soldado2 .vidaAtual');
+      const resultadoElemento = document.querySelector('.resultado');
+      const botao = document.querySelector('.botao');
+
+      // Exibe as vidas iniciais
+      vida1Elemento.textContent = vidaSoldado1;
+      vida2Elemento.textContent = vidaSoldado2;
+
+      botao.addEventListener('click', () => {
+        // Rola o dado (1d6)
+        const dado = Math.floor(Math.random() * 6) + 1;
+        resultadoElemento.textContent = `Você rolou um ${dado}!`;
+
+        // Aplica o dano
+        if (dado % 2 === 0) {
+          vidaSoldado1 = Math.max(0, vidaSoldado1 - 1);
+          vida1Elemento.textContent = vidaSoldado1;
+        } else {
+          vidaSoldado2 = Math.max(0, vidaSoldado2 - 1);
+          vida2Elemento.textContent = vidaSoldado2;
+        }
+
+        // Verifica se os dois estão com vida 0
+        if (vidaSoldado1 === 0 && vidaSoldado2 === 0) {
+          resultadoElemento.textContent = "Os dois soldados foram derrotados!";
+          setTimeout(() => {
+            window.location.href = "fase1.1.html";
+          }, 1500); // Espera 1,5s antes de mudar de página
+        }
+      });
+    </script>
+  </body>
+</html>

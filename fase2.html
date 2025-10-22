@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <title>Fase 2 - Ministro Polvo</title>
+    <link rel="stylesheet" type="text/CSS" href="style.css">
+  </head>
+  <body class="corpo">
+    <header>
+      <h2 class="titulo">Fase 2 - Ministro Polvo</h2>
+    </header>
+    <main>
+      <div class="jogo">
+        <div class="inimigo ministro">
+            <div class="inimigoFoto"><img class="inimigoFotoImg" src="ministroPolvo.png"></div>
+            <div class="inimigoNome"><p class="legenda">Ministro Polvo</p></div>
+            <div class="inimigoVida ministroVida"><p class="legenda">Vida: <p class="legenda vidaAtual"></p><p class="legenda">/</p><p class="legenda vidaTotal">4</p></p></div>
+        </div>
+        <div class="ataque">
+            <div class="ataqueBotao">
+                <button class="botao">ATACAR</button>
+            </div>
+            <div class="ataqueResultado">
+              <p class="resultado"></p>
+            </div>
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+
+    <script>
+      // Inicializa as vidas do ministro
+      let vidaMinistro = 4;
+
+      // Seleciona os elementos de vida e botão
+      const vida1Elemento = document.querySelector('.ministro .vidaAtual');
+      const resultadoElemento = document.querySelector('.resultado');
+      const botao = document.querySelector('.botao');
+
+      // Exibe as vidas iniciais
+      vida1Elemento.textContent = vidaMinistro;
+
+      botao.addEventListener('click', () => {
+        // Rola o dado (1d6)
+        const dado = Math.floor(Math.random() * 6) + 1;
+        resultadoElemento.textContent = `Você rolou um ${dado}!`;
+
+        // Aplica o dano
+        if (dado > 3) {
+          vidaMinistro = Math.max(0, vidaMinistro - 1);
+          vida1Elemento.textContent = vidaMinistro;
+        } 
+
+        // Verifica se os dois estão com vida 0
+        if (vidaMinistro === 0) {
+          resultadoElemento.textContent = "O Ministro foi derrotado!";
+          setTimeout(() => {
+            window.location.href = "fase2.1.html";
+          }, 1500); // Espera 1,5s antes de mudar de página
+        }
+      });
+    </script>
+  </body>
+</html>
