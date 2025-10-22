@@ -33,6 +33,7 @@
             <div class="ataqueResultado">
               <p class="paragrafo resultado1"></p>
               <p class="paragrafo resultado2"></p>
+              <p class="paragrafo resultado3"></p>
             </div>
         </div>
       </div>
@@ -49,6 +50,7 @@
       const vida2Elemento = document.querySelector('.soldado2 .vidaAtual');
       const resultadoElemento = document.querySelector('.resultado1');
       const resultadoElemento2 = document.querySelector('.resultado2');
+      const resultadoElemento3 = document.querySelector('.resultado3');
       const botao = document.querySelector('.botao');
 
       // Exibe as vidas iniciais
@@ -73,7 +75,7 @@
 
         // Verifica se os dois estão com vida 0
         if (vidaSoldado1 === 0 && vidaSoldado2 === 0) {
-          resultadoElemento.textContent = "Os dois soldados foram derrotados!";
+          resultadoElemento3.textContent = "Os dois soldados foram derrotados!";
           setTimeout(() => {
             window.location.href = "fase1.1.html";
           }, 1500); // Espera 1,5s antes de mudar de página
