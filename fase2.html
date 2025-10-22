@@ -21,7 +21,8 @@
                 <button class="botao">ATACAR</button>
             </div>
             <div class="ataqueResultado">
-              <p class="resultado"></p>
+              <p class="paragrafo resultado"></p>
+              <p class="paragrafo resultado2"></p>
             </div>
         </div>
       </div>
@@ -35,6 +36,7 @@
       // Seleciona os elementos de vida e botão
       const vida1Elemento = document.querySelector('.ministro .vidaAtual');
       const resultadoElemento = document.querySelector('.resultado');
+      const resultadoElemento2 = document.querySelector('.resultado2');
       const botao = document.querySelector('.botao');
 
       // Exibe as vidas iniciais
@@ -43,13 +45,17 @@
       botao.addEventListener('click', () => {
         // Rola o dado (1d6)
         const dado = Math.floor(Math.random() * 6) + 1;
-        resultadoElemento.innerHTML = Você rolou um <span class="dado-valor">${dado}</span>!;
+        resultadoElemento.innerHTML = 'Você rolou um <span class="dado-valor">${dado}</span>!';
 
         // Aplica o dano
         if (dado > 3) {
           vidaMinistro = Math.max(0, vidaMinistro - 1);
           vida1Elemento.textContent = vidaMinistro;
+          resultadoElemento2.innerHTML = 'Você acertou o ataque';
         } 
+        else {
+          resultadoElemento2.innerHTML = 'Você errou o ataque';
+        }
 
         // Verifica se os dois estão com vida 0
         if (vidaMinistro === 0) {
